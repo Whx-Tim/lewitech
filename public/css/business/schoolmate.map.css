@@ -1,0 +1,642 @@
+﻿/*@font-face { 
+font-family: "思源黑体";
+src: url('/n/assets/admin/fonts/fontSiYuan.ttf'); 
+} */
+
+body, html{
+    width: 100%;
+    height: 100%;
+    margin:0;
+    padding:0;
+    font-family:"微软雅黑";
+    font-size:14px;
+}
+#l-map {
+    width:100%;
+    height:100%;
+    overflow: hidden;
+}
+
+#centerIcon{
+    width: 50px;
+    height:74px;
+    display: none;
+    position :fixed;
+    z-index: 9999;
+    background-image: url(/n/assets/baidu_map/baidu_map_api/marking.png);
+    background-position: 0 0;
+    background-repeat: no-repeat;
+	background-size:100% 100%;
+}
+
+#schoolmateInf{
+    box-sizing: border-box;
+    margin: 0 10px 0px 10px;/*下边距由外层div扩充*/
+    min-width: 296px;
+    background-color: #FFFFFF;
+    position: relative;
+    color: #7E7E7E;
+    box-shadow: 2px 2px 2px #858585;
+	border-radius: 13px;
+}
+#schoolmateInf .head-box{
+    float:left;
+    height: 57px;
+    width: 57px;
+    border-radius: 57px;
+    margin:12px 12px 14px 13px;
+	padding:0;
+}
+#schoolmateInf .head-box img{
+    height: 57px;
+    width: 57px;
+    border-radius: 57px;
+	margin:-1px 0 0 -2px;
+	border:none;
+}
+#schoolmateInf span{
+    display: block;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 9px;
+    color: #929292;
+}
+#schoolmateInf span:nth-of-type(1){
+    padding-top: 18px;
+    font-weight: 800;
+    font-size: 15px;
+    line-height: 11px;
+    color: #303030;
+}
+#schoolmateInf span:nth-of-type(2){
+    margin-top: 9px;
+}
+#schoolmateInf span:nth-of-type(3){
+    margin-top: 7.5px;
+    margin-bottom: 21px;
+}
+#schoolmateInf .schoolmate-mark{
+    border-top: 1px solid #eee;
+    height: 35px
+}
+#schoolmateInf .schoolmate-mark span:nth-of-type(1){
+    display: inline;
+    margin-top: 0px;
+    margin-left: 30px;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 35px;
+    letter-spacing:1px;
+    color: #c6c6c6;
+}
+#schoolmateInf .schoolmate-mark span:nth-of-type(2){
+    display: inline;
+    margin-top: 0px;
+    margin-left: 26px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 35px;
+    color: #303030;
+}
+#schoolmateMarkEdit{
+    margin-top: 10.5px;
+    margin-right: 15px;
+    width: 14px;
+    height: 14px;
+    /*background-color: pink;*/
+    float: right;
+    background-image: url("/n/assets/baidu_map/baidu_map_api/schoolmate_mark_edit.png");
+    background-size: 14px 14px;
+}
+.editIng {
+    background-image: url("/n/assets/baidu_map/baidu_map_api/schoolmate_mark_edit_ing.png") !important; 
+}
+#schoolmateMarkInput{
+    display: none;
+    margin-top: 2px;
+    margin-left: 26px;
+    padding-left: 5px;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 22px;
+    width: auto;
+}
+
+
+
+/*
+#schoolmateInf ul{
+    font-size: 14px;
+    margin : -2px 0 8px 0;
+    padding-left: 80px;
+    list-style: none;
+    box-sizing:border-box;
+}
+#schoolmateInf ul li{
+    font-size: 14px;
+    line-height: 18px;
+    height: 18px;
+}
+#schoolmateInf ul li span{
+    display: inline-block;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+#schoolmateInf ul li span:nth-child(1){
+    width: 20%;
+    text-align: left;
+}
+#schoolmateInf ul li span:nth-child(2){
+    min-width: 60%;
+    max-width: 70%;
+    text-align: left;
+}
+#schoolmateInf ul li #schoolmateMark{
+    cursor: pointer;
+    color:  #72ACE3;
+}
+#schoolmateInf ul li #schoolmateMarkInput {
+    display: none;
+    height: 18px;
+    width: 60%;
+    margin: -3px -2px;
+    font-size: 14px;
+    border-width: 1px;
+}*/
+#schoolmateInf #messageButton{
+    position: absolute;
+    top: -24px;
+    right: 35px;
+    display: block;
+    width: 54px;
+    height: 54px;
+    border-radius: 54px;
+    background-image: url("/n/assets/baidu_map/baidu_map_api/message_btn.png");
+    background-size: 54px 54px;
+    /*
+    background-position: 0 0;
+    background-repeat: no-repeat ;
+    background-size: cover;
+    box-shadow: 2px 2px 2px #858585;*/
+    
+}
+/*#schoolmateInf #messageButton:active{
+    top: 8px;
+    box-shadow: none;
+    background-position: 0 -34px;
+}*/
+#schoolmateInf .comment{
+    box-sizing: border-box;
+    height: 43px;
+    background-color: #F2F2F2;
+    font-size: 14px;
+    line-height: 14px;
+    margin: 0 -9px;
+    padding: 6px 8px 0 8px;
+    word-wrap:break-word;
+}
+
+#submitInf{
+    box-sizing: border-box;
+    height: 128px;
+    margin: 0 auto 12px auto;
+    width : 92.5%;
+    min-width: 296px;
+    background-color: #FFFFFF;
+    position: relative;
+    overflow: hidden;
+    color: #7E7E7E;
+    box-shadow: 2px 2px 2px #858585;
+	border-radius: 3px;
+}
+#submitInf > div:nth-child(2){
+    margin: 15px 17px;
+}
+#submitInf textarea{
+    font-size: 14px;
+    width: 100%;
+    max-height: 48px;
+    text-align: left;
+    box-sizing: border-box;
+	border: 1px solid #9F9F9F;
+	color: #C2C2C2;
+    outline: none;
+    resize: none;
+}
+#submitInf #wordCount{
+    font-size: 12px;
+    margin: -15px 17px 3px 17px;
+    text-align: right;
+    line-height: 14px;
+}
+#submitInf #wordCount span:first-child{
+    color: #9f9f9f;
+}
+#submitInf #wordCount span:last-child{
+    color: #000000;
+}
+#submitInf .submitStatus{
+    text-align: center;
+    color: red;
+    display: none;
+}
+#submitInf .btn-div{
+	height: 39px;
+    margin: 0;
+	overflow:hidden;
+	background-color:#C5226C;	
+}
+#submitInf .btn-div a{
+	box-sizing: border-box;
+    display: inline-block;
+    height: 39px;
+	line-height: 19px;
+    text-align: center;
+    text-decoration: none;
+	padding:10px;
+    color: #FFFFFF;
+	font-size: 19px;
+    font-weight: bold;
+}
+#submitInf .btn-div a:active{
+    padding-top:12px;
+    padding-bottom:8px;
+}
+#submitInf .btn-div #submitBtn{
+    float:right;
+}
+#submitInf .btn-div #cancelBtn{
+    float:left;
+}
+
+
+#shopInf{
+    box-sizing: border-box;
+    height: auto;
+    margin: 0 9px;
+    min-width: 296px;
+    background-color: #FFFFFF;
+    /*padding: 9px 9px 0 9px;*/
+    position: relative;
+    /*overflow: hidden;*/
+    color: #7E7E7E;
+    /*box-shadow: 2px 2px 2px #858585;*/
+    border-radius: 10px;
+}
+#shopInf .head-box{
+    float:left;
+    height: 59px;
+    width: 59px;
+    border-radius: 59px;
+    margin: 9px 0px 0px 13px;
+    padding:0;
+}
+#shopInf .head-box img{
+    height: 59px;
+    width: 59px;
+    border-radius: 59px;
+    /*margin:-1px 0 0 -1px;*/
+    border:none;
+}
+
+
+
+#shopInf div{
+    font-size: 12px;
+    line-height: 12px;
+    margin-bottom: 7px;
+}
+#shopInf .shop-name{
+    font-size: 18px;
+    line-height: 18px;
+    min-height: 18px;
+    font-weight: 900;
+    color: #303030;
+    margin-left: 81px;
+    padding-top: 13px;
+    box-sizing:border-box;
+}
+#shopInf .shop-phone{
+    height: 14px;
+    margin-bottom: 12px;
+}
+#shopInf .shop-phone span{
+    display: inline-block;
+    background-image: url("/images/business/business_phone.png");
+    width: 11px;
+    height: 13.5px;
+    margin-left: 12px;
+    background-position: 0 0;
+    background-size: 11px 12.5px;
+    background-repeat: no-repeat;
+}
+#shopInf .shop-phone a{
+    font-size: 14px;
+    line-height: 14px;
+    height: 14px;
+    display: inline-block;
+    overflow: hidden;
+    margin-left: 10px;
+    word-break: break-all;
+    color: #303030;
+    text-decoration: none;
+}
+#shopInf .shop-address{
+    height: 15px;
+    margin-bottom: 5px;
+}
+#shopInf .shop-address span:nth-child(1){
+    display: inline-block;
+    background-image: url("/images/business/business_address.png");
+    width: 11px;
+    height: 13px;
+    margin-left: 12px;
+    background-position: 0 0;
+    background-size: 11px 12.5px;
+    background-repeat: no-repeat;
+}
+#shopInf .shop-address span:nth-child(2){
+    font-size: 14px;
+    line-height: 14px;
+    height: 14px;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    max-width: 170px;
+    margin-left: 10px;
+    word-break: break-all;
+    color: #303030;
+
+}
+#shopInf .shop-attr{
+    box-sizing: border-box;
+    height: 55px;
+    border-top: 1px solid #eee;
+    font-size: 14px;
+    padding-top: 8.5px;
+    /* margin: 0 -9px; */
+    /* padding: 7px 9px 0 9px; */
+    position: relative;
+    margin-bottom: 0;
+    padding-bottom: 10px;
+}
+#shopInf .shop-attr>div{
+    float:left;
+    box-sizing: border-box;
+    padding-left: 32px;
+}
+#shopInf .shop-attr .shop-type{
+
+}
+#shopInf .shop-attr .shop-type span:nth-child(1),#shopInf .shop-attr .shop-Avg span:nth-child(1)
+{
+    color: #b9b9b9;
+}
+#shopInf .shop-attr .shop-type span:nth-child(2),#shopInf .shop-attr .shop-Avg span:nth-child(2)
+{
+    color: #303030;
+    margin-left: 26px;
+}
+#shopInf .shop-attr .shop-score{
+    box-sizing: border-box;
+    float: right;
+    padding-left: 22px;
+    padding-right: 12px;
+    height: 60%;
+    padding-left: 0;
+    width: 52%;
+}
+#shopInf .shop-attr .shop-score span:nth-child(1)
+{
+    float: left;
+    width: 20%;
+    max-width: 35px;
+    vertical-align: top;
+    margin-right: 5%;
+}
+#shopInf .shop-attr .shop-score .star-wrap{
+    display: inline-block;
+    width: 75%;
+    height: 100%;
+    float: left;
+}
+#shopInf .shop-attr .shop-score i{
+    display: inline-block;
+    width: 18%;
+    max-width: 22px;
+    margin-right: 2%;
+    height: 22px;
+    background-position: 0 0;
+    /* background-image: url("score_star.png"); */
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+#shopInf .shop-attr .shop-score .star-one{
+    background-image: url("/images/business/score_star.png");
+}
+#shopInf .shop-attr .shop-score .star-half{
+    background-image: url("/images/business/score_star_half_o.png");
+}
+#shopInf .shop-attr .shop-score .star-none{
+    background-image: url("/images/business/score_star_o.png");
+}
+#shopInf #shopAttrBtn{
+    position: absolute;
+    top: -23px;
+    right: 38px;
+    display: block;
+    width: 52px;
+    height: 52px;
+    background-image: url("/images/busienss/shop_attr_btn.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/*#shopInf #shopAttrBtn:active{
+    
+    top: 10px;
+    right: 8px;
+    box-shadow: none;
+    top: 8px;
+    box-shadow: none;
+}*/
+
+#bottomInfWindow {
+    display: block;
+    position: fixed;
+    left: 0;
+    bottom:-138px;
+    width: 100%;
+    height: auto;
+}
+
+#topBar {
+    display: none;
+    position: fixed;
+    bottom: 25px;
+    width: 150px;
+    background: pink;
+    border-radius: 6px;
+    margin-left: 50%;
+    left: -75px;
+    overflow: hidden;
+}
+#topBar .top-tips{
+    box-sizing: border-box;
+    display: inline-block;
+    height: 48px;
+    line-height: 47px;
+    font-size: 16px;
+    color: #818181;
+    margin-left:5.625%;
+    max-width: 53%;
+}
+#topBar .btn{
+    display: block;
+    width: 75px;
+    height: 49px;
+    line-height: 49px !important;
+    float: left;
+    background: #C4226A;
+    color: #FFFFFF;
+    font-size: 16px;
+    text-align: center;
+    line-height: 29px;
+    cursor: pointer;
+}
+
+#topBar .btn:nth-of-type(2){
+    background: #fff;
+    color: #111;
+}
+#firstTips{
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-image: url(/n/assets/baidu_map/baidu_map_api/first_tips.webp);
+    background-size: 100% 100%;
+    /*background-position: right 50px top 35px;*/
+    background-repeat: no-repeat;
+    background-color: rgba(0,0,0,0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.toolbar{
+    position: absolute;
+    top: 13px !important;
+    height: 50px;
+    width: 52px;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    background-size: 20px 20px;
+}
+.toolbar-geo{
+    display: none;
+    left: 21px;
+    background-image: url(../baidu_map_api/icon1.png);
+    background-position: 17.5px 17px;
+    
+    border-right:1px solid #f0f0f0;
+}
+.toolbar-geo:hover{
+    background-image: url(../baidu_map_api/icon1s.png);
+    background-color: #e24e82;
+}
+.toolbar-message{
+    /*border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;*/
+    left: 72px !important;
+    background-image: url(../baidu_map_api/icon2.png);
+    background-position: 15px 17px;
+    border-right:1px solid #f0f0f0;
+}
+.toolbar-message:hover{
+    background-image: url(../baidu_map_api/icon2s.png);
+    background-color: #e24e82;
+}
+.toolbar-market{
+    left: 123px !important;
+    background-image: url(../baidu_map_api/icon3.png);
+    background-position: 15px 15px;
+    background-size: 19px 23px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.toolbar-market:hover{
+    background-image: url(../baidu_map_api/icon3s.png);
+    background-color: #e24e82;
+}
+
+#head-big{
+
+    height: 79px;
+    width: 72px;
+    overflow: hidden;
+
+    position: absolute;
+    display: none;
+    background-image: url(/n/assets/baidu_map/baidu_map_api/mark_point.png);
+    background-repeat: no-repeat;
+    background-position: -0px -0px;
+    white-space: nowrap;
+    moz-user-select: none;
+
+    background-size: 145px 79px;
+}
+
+#head-big-img{
+    position: absolute;
+    border-radius: 50%;
+    z-index: 0;
+    width: 50px;
+    height: 50px;
+    top: 9px;
+    left: 11px;
+    background-size: 50px 50px;
+    background-repeat: no-repeat;
+}
+#head-small{
+    position: absolute;
+    display: none;
+    background-image: url(/n/assets/baidu_map/baidu_map_api/mark_point.png);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    white-space: nowrap;
+    moz-user-select: none;
+
+    height: 39px;
+    width: 36px;
+    background-size: 72px 39px;
+}
+
+#head-small-img{
+    position: absolute;
+    border-radius: 50%;
+    z-index: 0;
+    width: 26px;
+    height: 26px;
+    top: 4px;
+    left: 5px;
+    background-size: 26px 26px;
+    background-repeat: no-repeat;
+}
+#tipsWrap{
+    position: absolute;
+    width: 100%;
+    bottom: 20px;
+    text-align: center;
+}
+#tipsWrap div{
+    background-color: #333;
+    display: inline;
+    padding: 5px 15px;
+    color: #fff;
+    border-radius: 15px;
+}
+#tipsWrap div span{
+    color: rgb(38,157,248);
+}

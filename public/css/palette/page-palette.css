@@ -1,0 +1,156 @@
+.page-palette {
+  position: absolute;
+  top: 46px;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0);
+  z-index: 105;
+  width: 100%;
+  height: 100%;
+}
+
+.page-palette.page {
+  padding-top: 0px;
+}
+
+.page-palette #canvas {
+  border: none;
+  background-color: rgba(255, 255, 255, 0.4);
+  margin: 12.5px;
+}
+
+.page-palette .palette-footer {
+  background-color: #ffffff;
+  min-height: 300px;
+}
+
+.page-palette .palette-footer .tool-box {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  width: 65%;
+  border: none;
+  box-sizing: border-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  vertical-align: top;
+}
+
+.page-palette .palette-footer .tool-box .tool-color {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding: 10px;
+}
+
+.page-palette .palette-footer .tool-box .tool-color div {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 100%;
+  margin: 0 5px;
+}
+
+.page-palette .palette-footer .tool-box .tool-color div.active {
+  border: 1px solid black;
+}
+
+.page-palette .palette-footer .tool-box .tool-color #color-1 {
+  background-color: #5d647f;
+}
+
+.page-palette .palette-footer .tool-box .tool-color #color-2 {
+  background-color: #fd9827;
+}
+
+.page-palette .palette-footer .tool-box .tool-color #color-3 {
+  background-color: #fffd38;
+}
+
+.page-palette .palette-footer .tool-box .tool-color #color-4 {
+  background-color: #c6d9ef;
+}
+
+.page-palette .palette-footer .tool-box .tool-pencil {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding: 10px;
+}
+
+.page-palette .palette-footer .tool-box .tool-pencil div {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 100%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  margin: 0 5px;
+}
+
+.page-palette .palette-footer .tool-box .tool-pencil div.active {
+  border: 1px solid black;
+}
+
+.page-palette .palette-footer .tool-box .tool-pencil #pencil-1 {
+  background-image: url("/images/palette/pencil_small.png");
+}
+
+.page-palette .palette-footer .tool-box .tool-pencil #pencil-2 {
+  background-image: url("/images/palette/pencil_normal.png");
+}
+
+.page-palette .palette-footer .tool-box .tool-pencil #pencil-3 {
+  background-image: url("/images/palette/pencil_big.png");
+}
+
+.page-palette .palette-footer .tool-box .tool-pencil #pencil-4 {
+  background-image: url("/images/palette/pencil_eraser.png");
+}
+
+.page-palette .palette-footer .btn-group {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  width: 30%;
+  border: none;
+  box-sizing: border-box;
+  padding: 10px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.page-palette .palette-footer .btn-group button {
+  font-size: 15px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  background-color: #c46f27;
+  color: #ffffff;
+  padding: 10px;
+}
+
+.page-palette .palette-footer .btn-group #palette-submit {
+  margin-top: 10px;
+}

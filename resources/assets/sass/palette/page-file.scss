@@ -1,0 +1,54 @@
+.page-file {
+  .navbar {
+    span {
+      color: #353535;
+    }
+  }
+
+  .guide-text {
+    text-align: center;
+    font-size: 14px;
+    color: rgb(200,200,200);
+  }
+
+  #file-form {
+    position: relative;
+    margin-top: 20px;
+
+    .file-upload-box {
+      width: 100%;
+      height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: rgb(220,220,220);
+      color: #ffffff;
+
+      img {
+        width: 100px;
+        height: 100px;
+      }
+
+      img.result {
+        width: 100%;
+        height: 250px;
+        z-index: 11;
+      }
+
+      p {
+        margin-top: 10px;
+      }
+    }
+
+    input[type=file] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      z-index: 10;
+      width: 100%;
+      height: 250px;
+    }
+  }
+}

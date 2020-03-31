@@ -1,0 +1,38 @@
+.page-sky {
+  .navbar {
+    span {
+      color: #353535;
+    }
+  }
+
+  .guide-text {
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    color: rgb(200,200,200);
+  }
+
+  .img-box {
+    display: flex;
+    padding: 5px;
+    min-height: 150px;
+
+    img {
+      flex: 1;
+      margin: 5px;
+      height: 150px;
+      width: 22%;
+
+      &.active {
+        border: 1px solid #3dd3c3;
+        box-shadow: #3dd3c3 0 0 15px 5px;
+      }
+    }
+  }
+
+  .upload-img-box {
+    img {
+      width: 100%;
+    }
+  }
+}

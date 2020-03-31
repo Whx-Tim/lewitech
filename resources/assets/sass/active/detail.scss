@@ -1,0 +1,170 @@
+@import "general";
+
+$space: 10px;
+$left-space: 10px;
+$right-space: 10px;
+$content-color: #959595;
+
+
+section.container {
+  @extend .container;
+
+  .banner {
+    width: 100%;
+    height: $banner-height;
+    overflow-y: auto;
+    img {
+      width: 100%;
+    }
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: row;
+    font-size: $md-size;
+    background-color: #fff;
+    span {
+      flex: 1;
+      box-sizing: border-box;
+      text-align: center;
+      padding: 5px 0;
+    }
+
+    .left-nav {
+      border-right: 1px solid #f2f2f2;
+    }
+
+    span.active {
+      color: $main-color;
+      border-bottom: 1px solid #52cd83;
+    }
+  }
+
+  #page-info {
+    padding-top: 10px;
+    background-color: $bk-color;
+    color: $main-color;
+    margin-bottom: 100px;
+    width: 100%;
+    h4 {
+      font-size: $bg-size;
+      padding: 0 $space;
+      word-wrap: break-word;
+    }
+
+    p {
+      padding-left: $space;
+      .view-count {
+        color: $content-color;
+        font-size: $xs-size;
+        position: relative;
+        padding-left: 65px;
+        &:after {
+          content: '浏览人数';
+          position: absolute;
+          top: 0;
+          left: 10px;
+        }
+      }
+
+      .apply-count {
+        @extend .view-count;
+        &:after {
+          content: '参与人数';
+        }
+      }
+    }
+
+    ul {
+      margin-top: 20px;
+      list-style: none;
+      li {
+        font-size: $sm-size;
+        text-align: right;
+        display: inline-block;
+        width: 100%;
+        box-sizing: border-box;
+        border-bottom: 1px solid #e4e4e4;
+        color: $content-color;
+        padding: 10px $space;
+        span {
+          float: left;
+          color: $main-color;
+          &:after {
+            clear: both;
+          }
+        }
+        span.time {
+          float: right;
+          text-align: left;
+          color: $main-color;
+          &:after {
+            clear: both;
+          }
+        }
+        span.data {
+          width: calc(100% - 65px);
+          word-wrap: break-word;
+          color: $main-color;
+          text-align: right;
+          box-sizing: border-box;
+          float: right;
+        }
+      }
+
+      li:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+  .info-footer {
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    button {
+      flex: 1;
+      padding: 10px;
+      font-size: $sm-size;
+      color: #fff;
+      border: none;
+      outline: none;
+      @include border-radius(15px);
+    }
+
+    .consult-btn {
+      background-color: #2a88bd;
+    }
+
+    .apply-btn {
+      background-color: $main-color;
+    }
+
+    .disable {
+      background-color: #bdbfc0;
+    }
+  }
+  #page-detail {
+    @extend #page-info;
+    display: none;
+
+    h4 {
+      font-size: $bg-size;
+      padding: 0 $space;
+      word-wrap: break-word;
+    }
+
+    p {
+      font-size: $sm-size;
+      padding: 0 $space;
+      color: $content-color;
+      margin-top: 20px;
+      width: 100%;
+      word-wrap: break-word;
+      box-sizing: border-box;
+    }
+  }
+}
